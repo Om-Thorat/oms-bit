@@ -12,6 +12,7 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
+    environment: secrets
     name: Build and Deploy
     steps:
     - name: Checkout
@@ -25,13 +26,13 @@ jobs:
     - name: Build DB
       uses: ./.github/actions/buildDB
       with:
-        GITHUB_TOKEN: ${{ env.AVATAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.AVATAR_TOKEN }}
 
-    - name: Build static site
-      run: yarn run build
+    # - name: Build static site
+    #   run: yarn run build
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+    # - name: Deploy
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./dist
