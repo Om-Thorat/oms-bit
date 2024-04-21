@@ -1,9 +1,10 @@
-name: GH Pages
+name: GH-Pages
 
 on:
   push:
     branches:
       - master
+      - welp
   workflow_run:
     workflows: ["Merge Bot"]
     types: completed
